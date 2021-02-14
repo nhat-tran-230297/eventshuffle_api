@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventshuffle</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link href="{% static 'api/css/style.css' %}" rel="stylesheet"></style>
+
+    <script src="{% static 'api/js/index.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Eventshuffle backend API</h1>  
+
+        {% for request_method in request_methods %}
+            <!-- {{ request_method.title }} -->
+            <div class="request">
+                <form id="{{ request_method.name }}" method="{{ request_method.method }}">
+                    {% if request_method.name == 'create-an-event' %}
+                        {% csrf_token %}
+                    {% endif %}
+
+                    <!-- header -->
+                    <div class="card">
+                        <div class="card-header header {{ request_method.method }}">
+                            <button class="btn {{ request_method.button_type }} methods">{{ request_method.method|upper }}</button>                    
+                            <span class="endpoints">{{ request_method.endpoints }}</span>
+                            <span class="title">{{ request_method.title }}</span>              
+                        </div>
+                    </div>
+
+                    <!-- parameters -->
+                    <div class="card parameters collapse-expand">
+                        <div class="card-header">
+                            <div class="card-text">Parameters</div>
+                        </div>
+                        
+                        <div class="card-body">
+                            {% if not request_method.parameters %}
+                                <div class="card-text">No parameters</div>
+                            {% else %}
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 15%;">Name</th>
+                                            <th style="width: 85%;">Input</th>
+                                        </tr>          
+                                    </thead>
+                                    <tbody>
+                                        {% for parameter in request_method.parameters %}
+                                            {% if parameter == 'id' %}
+                                                <tr>
+                                                    <td>id</td>
+                                                    <td><input type="number" min="0" required></td>
+                                                </tr>
+                                            {% else %}  
+                                                <tr>
+                                                    <td>Body</td>
+                                                    <td>
+                                                        <textarea required></textarea>
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}                                       
+                                                                              
+                                    </tbody>
+                                </table>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- response -->
+                    <div class="card response collapse-expand">
+                        <div class="card-header">
+                            <div class="card-text">Response</div>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;">Name</th>
+                                        <th style="width: 85%;">Description</th>
+                                    </tr>          
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Code</td>
+                                        <td class="status-code"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Body</td>
+                                        <td>
+                                            <div class="response-body">
+                                                <pre></pre>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="send">
+                                {% if request_method.method == 'get' %}
+                                    <input type="submit" value="Get API" class="btn btn-primary get-api-button">
+                                {% endif %}
+                                <input type="submit" value="Send" class="btn btn-secondary send-button">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        {% endfor %}
+          
+    </div>
+</body>
+</html>

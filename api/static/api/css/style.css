@@ -1,0 +1,176 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 400px) {
+    body {
+        font-size: 8px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 100%;
+        margin-bottom: 10rem;
+    }
+
+    .methods, .send-button, .get-api-button {
+        font-size: 8px;
+    }
+
+    .methods, .send-button, .get-api-button {
+        width: 50px;
+        height: 24px;      
+    }
+
+    .send-button {
+        margin-right: 5%;
+    }
+    
+    .get-api-button {
+        margin-right: 10px;   
+    }
+    
+}
+
+
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .container {
+        width: 50%;
+        margin-bottom: 10rem;
+    }
+
+    textarea {
+        font-size: 12px;
+    }
+    .response-body {
+        font-size: 14px;;
+    }
+
+    .methods {
+        width: 90px;
+        font-size: 16px;
+    }
+
+    .send-button, .get-api-button {
+        width: 80px;
+    }
+
+}
+
+
+/* request endpoints */
+.request {
+    margin-bottom: 2rem;
+}
+
+/* card header */
+.card-header {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    background-color: #DCDCDC;
+}
+
+.card-body {
+    background-color: #f8f9fa;
+}
+
+.methods {
+    margin-right: 3%;
+    font-weight: bolder;
+}
+
+.endpoints {
+    font-weight: 600;
+}
+
+.title{
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+/* request header */
+.header {
+    cursor: pointer;
+}
+
+.post{
+    background-color: #49cc90;
+}
+
+.get{
+    background-color: #87CEFA;
+}
+
+.delete {
+    background-color: #e39fa5;
+}
+
+.collapse-expand {
+    display: none;
+}
+
+/* request body */
+.card-header .card-text {
+    font-weight: 600;
+}
+
+/* table */
+
+
+
+/* form */
+textarea {
+    width: 95%;
+    height: 200px;
+}
+
+
+/* response body */
+.response-body {
+    width: 95%;
+    min-height: 200px;
+    max-height: 400px;
+    overflow: auto;
+
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+}
+
+
+/* send button */
+.send {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    
+}
+
+
+.send-button {
+    margin-right: 5%;
+    
+}
+
+.get-api-button {
+    margin-right: 10px; 
+}
