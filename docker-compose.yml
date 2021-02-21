@@ -4,10 +4,12 @@ services:
   web:
     build: 
       context: .
-      
+    
+    image: eventshuffle_api
+
     command: python manage.py runserver 0.0.0.0:8000
 
     ports: 
       - '8000:8000'
 
-    container_name: eventshuffle_api
+    container_name: eventshuffle_api_container
