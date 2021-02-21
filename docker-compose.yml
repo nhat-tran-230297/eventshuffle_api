@@ -4,12 +4,13 @@ services:
   web:
     build: 
       context: .
+      dockerfile: Dockerfile
     
-    image: eventshuffle_api
+    image: eventshuffle_api:latest
 
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:5000
 
     ports: 
-      - '8000:8000'
+      - '5000:5000'
 
     container_name: eventshuffle_api_container
