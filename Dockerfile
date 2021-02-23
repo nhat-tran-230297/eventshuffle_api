@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 ADD . .
 
-EXPOSE 8080
+EXPOSE 5000
